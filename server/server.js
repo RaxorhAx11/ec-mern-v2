@@ -107,9 +107,8 @@ app.use('*', (req, res) => {
   res.status(404).json({ error: 'Route not found' });
 });
 
-// For Vercel deployment, export the app instead of using app.listen()
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(PORT, () => console.log(`Server is now running on port ${PORT}`));
-}
-
-module.exports = app;
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is now running on port ${PORT}`);
+  console.log(`Health check available at: http://localhost:${PORT}/api/health`);
+});

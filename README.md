@@ -116,34 +116,35 @@ VITE_BACKEND_URL=http://localhost:5000
 VITE_BACKEND_AUTH_URL=http://localhost:5000/api/auth
 ```
 
-## Vercel Deployment
+## Replit Deployment
 
-### 1. Backend Deployment
-1. Create a new Vercel project
-2. Connect your GitHub repository
-3. Set the root directory to `server`
-4. Add environment variables in Vercel dashboard:
+### 1. Import to Replit
+1. Go to [replit.com](https://replit.com)
+2. Click "Create Repl"
+3. Select "Import from GitHub"
+4. Enter your repository URL
+5. Click "Import from GitHub"
+
+### 2. Configure Environment Variables
+1. In your Repl, click the "Secrets" tab (🔒 icon)
+2. Add all required environment variables:
    - Copy from `server/env.production.example`
    - Update with your production values
-5. Deploy
+   - Set `CLIENT_BASE_URL` to your Repl URL
 
-### 2. Frontend Deployment
-1. Create another Vercel project
-2. Connect your GitHub repository
-3. Set the root directory to `client`
-4. Add environment variables in Vercel dashboard:
-   - Copy from `client/env.production.example`
-   - Update `VITE_MAIN_BACKEND_URL` to your backend Vercel URL
-5. Deploy
+### 3. Start the Server
+1. Click the "Run" button in Replit
+2. Wait for dependencies to install
+3. Check console for successful startup
 
-### 3. Environment Variables for Production
+### 4. Environment Variables for Production
 
-#### Backend (Vercel)
+#### Backend (Replit Secrets)
 ```env
-PORT=3000
 NODE_ENV=production
+PORT=5000
 MONGODB_URL=mongodb+srv://username:password@cluster.mongodb.net/ec-mern
-CLIENT_BASE_URL=https://your-frontend-app.vercel.app
+CLIENT_BASE_URL=https://your-repl-url.replit.app
 JWT_SECRET=your-production-secret
 CLOUDINARY_CLOUD_NAME=your-cloud-name
 CLOUDINARY_API_KEY=your-api-key
@@ -152,12 +153,11 @@ PAYPAL_CLIENT_ID=your-paypal-client-id
 PAYPAL_CLIENT_SECRET=your-paypal-client-secret
 ```
 
-#### Frontend (Vercel)
-```env
-VITE_MAIN_BACKEND_URL=https://your-backend-app.vercel.app
-VITE_BACKEND_URL=https://your-backend-app.vercel.app
-VITE_BACKEND_AUTH_URL=https://your-backend-app.vercel.app/api/auth
-```
+### 5. Frontend Deployment (Optional)
+For frontend deployment, you can:
+1. Deploy to Vercel, Netlify, or GitHub Pages
+2. Update environment variables to point to your Replit backend
+3. Or serve the frontend from the same Replit instance
 
 ## API Endpoints
 

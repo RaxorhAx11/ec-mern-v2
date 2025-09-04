@@ -1,0 +1,26 @@
+modules = ["nodejs-18"]
+
+[deployment]
+run = ["sh", "start.sh"]
+healthcheckPath = "/api/health"
+healthcheckTimeout = 10
+restartPolicy = "on-failure"
+
+[env]
+PATH = "${PATH}:${PWD}/server/node_modules/.bin"
+
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix", ".replitignore"]
+
+[ports]
+0.0.0.0 = { external = true, protocol = "http" }
+
+[unitTest]
+language = "nodejs"
+
+[debugger]
+support = true
+
+[[ports]]
+localPort = 5000
+externalPort = 80
